@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bottom_appBar_demo.dart';
-import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'pages/splash_screen.dart';
 
