@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:demo/Post.dart';
 
-
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class MyHomePage extends StatelessWidget {
                 '画廊'.toUpperCase(),
                 style: TextStyle(
                   fontSize: 28.0,
-                  color: Color(0xff00ff00),
+                  color: Color(0xff333333),
                   letterSpacing: 3.0,
                   fontWeight: FontWeight.w400,
                 ),

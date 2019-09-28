@@ -44,7 +44,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ],
           color: Colors.white,
           buttonBackgroundColor: Colors.white,
-          backgroundColor: Colors.grey,
+          backgroundColor: Color(0xff4caf50),
           animationCurve: Curves.easeInOut,
           animationDuration: Duration(milliseconds: 600),
           onTap: (index) {
