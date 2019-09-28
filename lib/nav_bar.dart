@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'pages/home_screen.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'home_page.dart';
 import 'pages/email_screen.dart';
 import 'pages/pages_screen.dart';
 import 'pages/people_screen.dart';
+import 'pages/swiper_screen.dart';
 
-class BottomBar extends StatefulWidget {
-  // name({Key key}) : super(key: key);
+void main() => runApp(MaterialApp(home: BottomNavBar()));
 
-  _BottomBarState createState() => _BottomBarState();
+class BottomNavBar extends StatefulWidget {
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
 }
 
-class _BottomBarState extends State<BottomBar> {
-  final bottomBarColor = Colors.purple;
+class _BottomNavBarState extends State<BottomNavBar> {
+  GlobalKey _bottomNavigationKey = GlobalKey();
 
   int _currentIndex = 0;
   List<Widget> list = List();
@@ -19,51 +22,37 @@ class _BottomBarState extends State<BottomBar> {
   @override
   void initState() {
     list
-      ..add(HomeScreen())
+      ..add(MyHomePage())
       ..add(EmailScreen())
       ..add(PagesScreen())
-      ..add(PeopleScreen());
+      ..add(PeopleScreen())
+      ..add(ExampleCustom());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: list[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  color: bottomBarColor,
-                ),
-                title: Text('首页', style: TextStyle(color: bottomBarColor))),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.email,
-                  color: bottomBarColor,
-                ),
-                title: Text('邮件', style: TextStyle(color: bottomBarColor))),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.pages,
-                  color: bottomBarColor,
-                ),
-                title: Text('页面', style: TextStyle(color: bottomBarColor))),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                  color: bottomBarColor,
-                ),
-                title: Text('我的', style: TextStyle(color: bottomBarColor))),
+        bottomNavigationBar: CurvedNavigationBar(
+          key: _bottomNavigationKey,
+          items: <Widget>[
+            Icon(Icons.image, size: 30),
+            Icon(Icons.list, size: 30),
+            Icon(Icons.compare_arrows, size: 30),
+            Icon(Icons.call_split, size: 30),
+            Icon(Icons.switch_camera, size: 30),
           ],
-          currentIndex: _currentIndex,
-          onTap: (int index) {
+          color: Colors.white,
+          buttonBackgroundColor: Colors.white,
+          backgroundColor: Colors.grey,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration(milliseconds: 600),
+          onTap: (index) {
             setState(() {
               _currentIndex = index;
             });
           },
-          type: BottomNavigationBarType.fixed),
-    );
+        ),
+        body: list[_currentIndex]);
   }
 }

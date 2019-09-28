@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:demo/Post.dart';
 
+
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,15 +15,16 @@ class MyHomePage extends StatelessWidget {
             expandedHeight: 178.0,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Ninghao Flutter'.toUpperCase(),
+                '画廊'.toUpperCase(),
                 style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 28.0,
+                  color: Color(0xff00ff00),
                   letterSpacing: 3.0,
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              background: Image.asset(
-                'assets/overkill.png',
+              background: Image.network(
+                'https://raw.githubusercontent.com/fudanda/images/master/overkill.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -53,7 +55,7 @@ class SliverListDemo extends StatelessWidget {
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 16 / 9,
-                    child: Image.asset(
+                    child: Image.network(
                       posts[index].imageUrl,
                       fit: BoxFit.cover,
                     ),
@@ -99,7 +101,7 @@ class SliverGridDemo extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           return Container(
-            child: Image.asset(
+            child: Image.network(
               posts[index].imageUrl,
               fit: BoxFit.cover,
             ),

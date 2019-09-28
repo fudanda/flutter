@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo/home_page.dart';
+import 'package:demo/nav_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
     _animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => BottomNavBar()),
             (route) => route == null);
       }
     });
@@ -42,9 +42,9 @@ class _SplashScreenState extends State<SplashScreen>
     return FadeTransition(
       //透明度动画组件
       opacity: _animation, //执行动画
-      child: Image.asset(
+      child: Image.network(
           //网络图片
-          'assets/overkill.png',
+          'https://raw.githubusercontent.com/fudanda/images/master/overkill.png',
           scale: 2.0, //进行缩放
           fit: BoxFit.cover // 充满父容器
           ),
